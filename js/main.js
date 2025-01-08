@@ -36,7 +36,6 @@ $(".play").click(function () {
 
 /* EVENT */
 const event_list = new Swiper('.event_list', {
-  centeredSlides: true, // Slide hiện tại được căn giữa
   loop: true,
   speed: 3000,
   autoplay: {
@@ -54,7 +53,7 @@ const event_list = new Swiper('.event_list', {
       spaceBetween: 20, // Khoảng cách giữa các slide
     },
     768: {
-      slidesPerView: 2.5, // 2 slide trên màn hình trung bình
+      slidesPerView: 3, // 2 slide trên màn hình trung bình
       spaceBetween: 30,
     },
     1200: {
