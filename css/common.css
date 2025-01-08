@@ -1,0 +1,185 @@
+@charset "utf-8";
+
+:root {
+  --main-font: "Pretendard-Regular", sans-serif;
+--sub-font: "KOTRALEAP", serif;
+--base-font: "Bevan", serif;
+--main-color: #401205;
+--sub-color: #F7DAD9;
+--base-color: #FEFAF6;
+}
+
+/* set up cơ bản cho main */
+body {font-family: var(--main-font); font-size: 1.6rem; line-height: 1.5; color: #4D4D4D; overflow-x: hidden;}
+.inner {max-width: 1700px; margin: 0 auto; padding: 0 20px;}
+
+
+
+/* HEADER */
+#header {padding-top: 20px; position: absolute; left: 0; top: 0; width: 100%; z-index: 3; transition: all 0.5s;}
+/* 1 - logo */
+#header h1 {position: relative; width: 100px; }
+#header h1 img {width: 60%; display: block;}
+/* 2 - menu bar */
+#header .inner {display: flex; justify-content: space-between; align-items: center;}
+#header nav {margin-right: 300px;} /* trong inner có 3 yếu tố, đẩy yếu tố ở giữa là nav sang bên trái */
+
+
+#header .gnb {display: flex;}
+#header .gnb > li {position: relative; transition: all 0.5s;}
+#header .gnb > li:hover {background: #fff; border-radius: 50px; border: 1px solid var(--main-color);}
+/* 3 - chữ bên trong menu 1 */
+#header .gnb > li > a {display: block; padding: 20px 40px; color: #fff; font-size: 2rem;}
+#header.active .gnb > li:hover > a {color: var(--main-color);}
+
+/* 4 -  2차 menu*/
+#header .gnb > li .depth2 {position: absolute; z-index: 5; width: 300px; display: none; left: calc(50% - 150px); text-align: center; background: #fff; border-radius: 50px; border: 1px solid var(--main-color); padding-bottom: 20px;}
+#header .gnb > li .depth2 li {display: inline-block; width: 100%;}
+#header .gnb > li .depth2 li img {display: block; width: 100%; border-radius: 300px; box-shadow: 5px 6px 0 #ddd;}
+#header .gnb > li .depth2 li a {display: block; font-size: 1.8rem; padding-top: 20px; color: var(--main-color); transition: all 0.5s; position: relative;}
+#header .gnb > li .depth2 li:first-child {padding-left: 40px; padding-right: 40px;}
+#header .gnb > li .depth2 li:not(:first-child) {padding-left: 0; padding-right: 0;}
+#header .gnb > li .depth2 li:hover a {transform: translateY(-3px) scale(1.02);} 
+
+/* thêm icon coffee bên cạnh nội dung trong menu2 */
+#header .gnb > li .depth2 li:not(:first-child) a::after {content: ""; position: absolute; top: 25px; left: auto; width: 16px; height: 16px; background: url(../images/common/icon_cf.png) no-repeat center center; opacity: 0; transition: all 0.5s;}
+#header .gnb > li .depth2 > li:hover a::after {opacity: 1; transform: translateX(10px);}
+
+/* 5 - thêm border bottom khi rê chuột lên menu1 là gnb */
+#header.active {border-bottom: 1px solid rgba(255,255,255,0.7);}
+
+
+
+
+
+/* 6 - nhấn nút ham thì hiện ra màn hình đen mờ và các menu */
+.mgnb_wrap {position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none;}
+.mgnb_wrap .mgnb {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #fff; width: 55%;}
+.mgnb_wrap .mgnb > li {display: flex; border: 1px solid rgba(255,255,255,0.5); font-size: 3rem; align-items: center; padding: 20px 50px; border-radius: 200px; margin-bottom: 5px;}
+.mgnb_wrap .mgnb > li > a {width: 350px; transition: all 0.5s; font-weight: 700; text-align: center;}
+.mgnb_wrap .mgnb > li > a:hover {transform: scale(1.1); letter-spacing: 0.05em;}
+.mgnb_wrap .mgnb > li .mdepth2 {display: flex; gap: 80px; font-size: 2rem; opacity: 0.9; align-items: center; }
+.mgnb_wrap .mgnb > li .mdepth2 li:nth-of-type(1) {width: 150px;}
+.mgnb_wrap .mgnb > li .mdepth2 li > a {display: block; font-size: 2.5rem; transition: all 0.5s;}
+.mgnb_wrap .mgnb > li .mdepth2 li:not(:first-child) > a:hover {transform: scale(1.05); letter-spacing: 0.05em; border-bottom: 1px solid #fff;}
+
+.mgnb_wrap .mgnb > li .mdepth2 li img {display: block; width: 100%; border-radius: 100px; box-shadow: 2px 2px 0 #fff;}
+.mgnb_wrap .mgnb_close {width: 30px; height: 30px; font-size: 0; background: url(../images/common/close_w.png); cursor: pointer; position: absolute; right: 20.8vw; top: 1.6vw;}
+
+
+
+
+
+/* 7 - khi giảm màn hình */
+@media (max-width: 1500px) {
+  #header nav {margin-right: 100px;}
+  .mgnb_wrap .mgnb {width: 70%;}
+  .mgnb_wrap .mgnb > li {font-size: 2.8rem; padding: 18px 40px;}
+  .mgnb_wrap .mgnb > li > a {width: 300px;}
+  .mgnb_wrap .mgnb > li .mdepth2 {gap: 60px; }
+  .mgnb_wrap .mgnb > li .mdepth2 li:nth-of-type(1) {width: 130px;}
+  .mgnb_wrap .mgnb > li .mdepth2 li > a {font-size: 2.2rem;}
+  .mgnb_wrap .mgnb_close {right: 19vw;}
+}
+@media (max-width: 1300px) {
+  #header h1 img {width: 60px;}
+  #header nav {margin-right: 70px;}
+  #header .gnb > li > a {padding: 20px;}
+  .mgnb_wrap .mgnb_close {right: 16vw; top: 1.6vw;}
+  .mgnb_wrap .mgnb_close {right: 15vw;}
+}
+@media (max-width: 1200px) {
+  #header .gnb {display: none;}
+  #header .util > *:not(.ham) {display: none !important;} /* khi giảm màn hình thì phầm menu đầu trang mất đi, nút search mất đi, giỏ hàng mất đi, còn mỗi ham hiện ra */
+  .mgnb_wrap .mgnb_close {right: 14vw;}
+}
+
+@media (max-width: 1090px) {
+  .mgnb_wrap .mgnb {width: 80%;}
+  .mgnb_wrap .mgnb > li {font-size: 2.5rem; padding: 15px 30px; margin-bottom: 4px;}
+  .mgnb_wrap .mgnb > li > a {width: 250px;}
+  .mgnb_wrap .mgnb > li .mdepth2 {gap: 40px;}
+  .mgnb_wrap .mgnb > li .mdepth2 li:nth-of-type(1) {width: 120px;}
+  .mgnb_wrap .mgnb > li .mdepth2 li > a {font-size: 2.2rem;}
+  .mgnb_wrap .mgnb_close {right: 13vw;}
+}
+
+@media (max-width: 1000px) {
+  .mgnb_wrap .mgnb > li {flex-wrap: wrap; padding: 10px 40px;}
+  .mgnb_wrap .mgnb > li > a {width: 100%; font-size: 2rem;}
+  .mgnb_wrap .mgnb > li .mdepth2 {width: 100%; gap: 40px; justify-content: space-between; padding: 20px 80px 20px 80px;}
+  .mgnb_wrap .mgnb_close {right: 7vw;}
+}
+
+
+@media (max-width: 768px) {
+  #header h1 img {width: 40px;}
+  .mgnb_wrap .mgnb > li {padding: 20px;}
+  .mgnb_wrap .mgnb > li .mdepth2 {display: none; padding-top: 10px; flex-wrap: wrap; flex-direction: column; text-align: center; align-items: center;}
+  .mgnb_wrap .mgnb {width: 90%;}
+  .mgnb_wrap .mgnb > li .mdepth2 li:nth-of-type(1) {margin: 0 auto;}
+  .mgnb_wrap .mgnb > li .mdepth2 li > a {font-size: 1.6rem; padding: 10px 0;}
+  .mgnb_wrap .mgnb_close {right: 5vw; top: 5vw;}
+}
+
+
+
+
+
+/* 8 - vùng tìm kiếm khi nhấn nút search */
+.search {position: absolute; left: 50%; transform: translate(-50%, -20px); background: rgba(255,255,255,0.5); width: 800px; padding: 50px; border-radius: 20px 20px 200px 200px; display: none; transition: all 0.5s ease;}
+.search .input_box {display: flex; justify-content: center;}
+.search input[type="text"] {height: 100px; background: #fff; border-radius: 10px 0 0 100px; width: 500px; padding-left: 50px; font-size: 1.6rem; color: var(--main-color);}
+.search .input_box input::placeholder {letter-spacing: 0.5em;}
+.search input[type="submit"] {height: 100px; background: #fff url(../images/common/btn_sch.png) no-repeat center center; font-size: 0; cursor: pointer; border-radius: 0 10px 100px 0; width: 150px;}
+/* nhấn nút search thì khung search hiện fade down */
+.search.show {opacity: 1; transform: translateY(0);}
+
+
+
+
+/* 9 - nút bên góc phải, phải chốt size cho mỗi yếu tố, sau đó nhét background vào */
+#header .util {display: flex; gap: 10px;}
+#header .util a {display: block; color: #fff; font-size: 0;}
+#header .util .btn_search {width: 24px; height: 24px; font-size: 0; cursor: pointer; background: url(../images/common/icon_search_w.svg);}
+#header .util .btn_search.active {background: url(../images/common/icon_close_w.svg);}
+#header .util .ham {width: 24px; height: 24px; font-size: 0; cursor: pointer; background: url(../images/common/icon_menu_w.svg);}
+
+
+
+
+
+
+
+/* footer */
+#footer {padding: 50px 0 0; background: var(--sub-color); color: #fff;}
+#footer .inner {max-width: 100%; text-align: center; padding: 50px 0 0; background: var(--main-color);}
+#footer .footer_center {display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; margin-bottom: 50px;}
+#footer .footer_center .footer_logo {width: 100px;}
+#footer .footer_center .footer_logo img {display: block; width: 100%;}
+
+#footer .footer_center .footer_link {display: flex; justify-content: space-between; width: 1200px; flex-wrap: wrap;}
+#footer .footer_center .footer_link > li {width: calc((100% - 250px) / 5);}
+#footer .footer_center .footer_link > li > a {display: block; font-weight: 700; font-size: 1.8rem; padding-bottom: 10px;}
+#footer .footer_center .footer_link > li > ul {border-top: 1px solid #fff;}
+#footer .footer_center .footer_link > li > ul > li {padding-top: 10px;}
+#footer .footer_center .footer_link li .sns {display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;}
+#footer .copy {color: rgba(255,255,255,0.7); font-style: italic; padding: 20px 0; border-top: rgba(255,255,255,0.5) 1px solid;}
+
+@media (max-width: 1200px) {
+  #footer .footer_center .footer_logo {width: 80px;}
+  #footer .footer_center .footer_link {width: 100%;}
+  #footer .footer_center .footer_link > li {width: calc((100% - 150px) / 3);}
+}
+@media (max-width: 768px) {
+  #footer .footer_center .footer_logo {width: 60px;}
+  #footer {padding: 20px 0 0;}
+#footer .inner {padding: 20px 0 0;}
+#footer .footer_center {margin-bottom: 20px; gap: 20px;}
+  #footer .footer_center .footer_link {gap: 10px;}
+  #footer .footer_center .footer_link > li {width: 100%; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);}
+  #footer .footer_center .footer_link > li > a {padding-bottom: 0; font-size: 1.5rem;}
+  #footer .footer_center .footer_link > li > ul {border-top: none;}
+  #footer .footer_center .footer_link > li > ul > li {padding-top: 0; font-size: 1.3rem;}
+  #footer .copy {font-size: 1.2rem;}
+}
