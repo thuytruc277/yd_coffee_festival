@@ -54,7 +54,7 @@ body {font-family: var(--main-font); font-size: 1.6rem; line-height: 1.5; color:
 
 /* 6 - nhấn nút ham thì hiện ra màn hình đen mờ và các menu */
 .mgnb_wrap {position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none;}
-.mgnb_wrap .mgnb {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #fff; width: 55%;}
+.mgnb_wrap .mgnb {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #fff; width: 70%;}
 .mgnb_wrap .mgnb > li {display: flex; border: 1px solid rgba(255,255,255,0.5); font-size: 3rem; align-items: center; padding: 20px 50px; border-radius: 200px; margin-bottom: 5px;}
 .mgnb_wrap .mgnb > li > a {width: 350px; transition: all 0.5s; font-weight: 700; text-align: center;}
 .mgnb_wrap .mgnb > li > a:hover {transform: scale(1.1); letter-spacing: 0.05em;}
@@ -73,7 +73,7 @@ body {font-family: var(--main-font); font-size: 1.6rem; line-height: 1.5; color:
 /* 7 - khi giảm màn hình */
 @media (max-width: 1500px) {
   #header nav {margin-right: 100px;}
-  .mgnb_wrap .mgnb {width: 70%;}
+  .mgnb_wrap .mgnb {width: 80%;}
   .mgnb_wrap .mgnb > li {font-size: 2.8rem; padding: 18px 40px;}
   .mgnb_wrap .mgnb > li > a {width: 300px;}
   .mgnb_wrap .mgnb > li .mdepth2 {gap: 60px; }
